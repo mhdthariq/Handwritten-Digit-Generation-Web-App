@@ -17,9 +17,9 @@ def load_model_and_data():
     """Loads the saved Keras model and the MNIST test dataset."""
     try:
         # Load the entire model
-        model = models.load_model("bestmodel.h5")
+        model = models.load_model("../models/bestmodel.h5")
     except (IOError, ImportError):
-        st.error("Error: Could not load 'bestmodel.h5'. Make sure it's in the same directory as this app script and has been uploaded to your deployment environment.")
+        st.error("Error: Could not load 'bestmodel.h5'. Make sure it's in the 'models' directory and has been uploaded to your deployment environment.")
         return None, None, None
     
     # Load the test data
