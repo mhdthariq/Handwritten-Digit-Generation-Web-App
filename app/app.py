@@ -4,6 +4,7 @@ from tensorflow.keras import models
 import numpy as np
 import matplotlib.pyplot as plt
 import random
+import os
 
 # --- App Configuration ---
 st.set_page_config(layout="wide")
@@ -16,8 +17,11 @@ st.write("Test the trained deep learning model by selecting a digit. The app wil
 def load_model_and_data():
     """Loads the saved Keras model and the MNIST test dataset."""
     try:
+        # Get the absolute path to the directory of the current script
+        script_dir = os.path.dirname(os.path.abspath(__file__))
+        model_path = os.path.join(script_dir, "..", "models", "bestmodel.h5")
         # Load the entire model
-        model = models.load_model("../models/bestmodel.h5")
+        model = models.load_model(model_path)
     except (IOError, ImportError):
         st.error("Error: Could not load 'bestmodel.h5'. Make sure it's in the 'models' directory and has been uploaded to your deployment environment.")
         return None, None, None
